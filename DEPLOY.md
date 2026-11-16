@@ -6,7 +6,7 @@
 - 網站： https://fci1007-design.github.io/zongsheng-ai-meeting-20261116/
 - 目標分支／目錄：`main` / 根目錄
 - 必要環境變數：無。部署沿用本機 GitHub CLI 登入；不在儲存庫保存憑證。
-- 目前狀態：本機實作與驗證完成，待建立遠端與啟用 Pages；上述網址尚未宣稱可連線。
+- 目前狀態：已發布，Pages 建置成功且線上 HTTP 200、內容一致性與瀏覽器實測通過。
 
 ## 驗證
 
@@ -20,3 +20,18 @@
 ## 發布歷程
 
 - 2026-11-16 19:43:01 +0800：本機靜態頁與跨尺寸驗證完成，準備初次推送。
+
+- 2026-11-16 19:43:53 +0800：初版 commit `2d869d9` 已推送至公開 GitHub 儲存庫；Pages 已建立，來源 `main` / `/`，HTTPS 開啟。等待建置及線上實測。
+
+- 2026-11-16 19:45:09 +0800：Pages 初版 `2d869d9eb2e6a7f88c1ab4146bcab282f754cbdf` 建置狀態 `built`，公開網址 HTTP 200。線上 HTML 與本機逐 byte 相等，SHA-256 `62b452c22a0f1d9c8a1d8eb9476ee39e62260a58ddbc93a46f410e8caa20941c`。線上 390/1440px 特大字無水平溢出、7 項共識、7 項行動、2 欄、分工及刪除項目皆正確，無 page error。更新部署與交接文件。
+
+## 後續查驗
+
+```bash
+gh api repos/fci1007-design/zongsheng-ai-meeting-20261116/pages/builds/latest
+curl -I https://fci1007-design.github.io/zongsheng-ai-meeting-20261116/
+git status --short --branch
+git log -1 --oneline
+```
+
+重新部署：修改 `index.html`，跨尺寸驗證後提交並 `git push origin main`，確認 Pages 建置成功及公開內容正確，再更新本紀錄。
